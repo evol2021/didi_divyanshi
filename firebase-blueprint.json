@@ -1,0 +1,223 @@
+{
+  "entities": {
+    "SiteConfig": {
+      "title": "SiteConfig",
+      "description": "Global dynamic configuration, branding, media URLs, social links, live stream settings, and daily Suvichar for Didi Divyanshi Kishori Ji portal.",
+      "type": "object",
+      "properties": {
+        "titleHindi": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "subtitleHindi": { "type": "string", "maxLength": 160 },
+        "locationHindi": { "type": "string", "maxLength": 120 },
+        "sinceYear": { "type": "string", "maxLength": 20 },
+        "taglineHindi": { "type": "string", "maxLength": 240 },
+        "aboutTitle": { "type": "string", "maxLength": 160 },
+        "aboutDescription": { "type": "string", "maxLength": 2000 },
+        "heroImageUrl": { "type": "string", "maxLength": 1000 },
+        "aboutImageUrl": { "type": "string", "maxLength": 1000 },
+        "channelBannerUrl": { "type": "string", "maxLength": 1000 },
+        "logoImageUrl": { "type": "string", "maxLength": 1000 },
+        "phoneDisplay": { "type": "string", "maxLength": 30 },
+        "whatsappNumber": { "type": "string", "minLength": 10, "maxLength": 20, "pattern": "^[0-9]{10,15}$" },
+        "youtubeChannelUrl": { "type": "string", "maxLength": 500 },
+        "youtubeHandle": { "type": "string", "maxLength": 80 },
+        "youtubeSubscriberText": { "type": "string", "maxLength": 60 },
+        "facebookPageUrl": { "type": "string", "maxLength": 500 },
+        "instagramUrl": { "type": "string", "maxLength": 500 },
+        "liveVideoUrl": { "type": "string", "maxLength": 500 },
+        "liveVideoTitle": { "type": "string", "maxLength": 200 },
+        "isLiveNow": { "type": "boolean" },
+        "suvicharText": { "type": "string", "maxLength": 600 },
+        "suvicharAuthor": { "type": "string", "maxLength": 100 },
+        "bookingNoticeText": { "type": "string", "maxLength": 600 },
+        "ashramAddress": { "type": "string", "maxLength": 300 },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "titleHindi",
+        "subtitleHindi",
+        "locationHindi",
+        "sinceYear",
+        "taglineHindi",
+        "aboutTitle",
+        "aboutDescription",
+        "heroImageUrl",
+        "aboutImageUrl",
+        "channelBannerUrl",
+        "logoImageUrl",
+        "phoneDisplay",
+        "whatsappNumber",
+        "youtubeChannelUrl",
+        "youtubeHandle",
+        "youtubeSubscriberText",
+        "facebookPageUrl",
+        "instagramUrl",
+        "liveVideoUrl",
+        "liveVideoTitle",
+        "isLiveNow",
+        "suvicharText",
+        "suvicharAuthor",
+        "bookingNoticeText",
+        "ashramAddress",
+        "updatedAt"
+      ]
+    },
+    "UpcomingKatha": {
+      "title": "UpcomingKatha",
+      "description": "Scheduled upcoming or ongoing Katha event.",
+      "type": "object",
+      "properties": {
+        "kathaName": { "type": "string", "minLength": 2, "maxLength": 140 },
+        "dateRange": { "type": "string", "minLength": 2, "maxLength": 100 },
+        "startDate": { "type": "string", "maxLength": 20, "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "timing": { "type": "string", "maxLength": 100 },
+        "cityState": { "type": "string", "minLength": 2, "maxLength": 140 },
+        "venue": { "type": "string", "maxLength": 200 },
+        "organizer": { "type": "string", "maxLength": 140 },
+        "status": { "type": "string", "enum": ["upcoming", "live", "completed"] },
+        "posterUrl": { "type": "string", "maxLength": 1000 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "kathaName",
+        "dateRange",
+        "startDate",
+        "timing",
+        "cityState",
+        "venue",
+        "organizer",
+        "status",
+        "posterUrl",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "KathaType": {
+      "title": "KathaType",
+      "description": "One of the main Katha categories offered by Didi Ji.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "englishTitle": { "type": "string", "maxLength": 120 },
+        "durationBadge": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "description": { "type": "string", "maxLength": 500 },
+        "imageUrl": { "type": "string", "maxLength": 1000 },
+        "order": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "title",
+        "englishTitle",
+        "durationBadge",
+        "description",
+        "imageUrl",
+        "order",
+        "updatedAt"
+      ]
+    },
+    "ShortClip": {
+      "title": "ShortClip",
+      "description": "YouTube Shorts or Bhajan video clip item.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "youtubeUrl": { "type": "string", "minLength": 5, "maxLength": 500 },
+        "thumbnailUrl": { "type": "string", "maxLength": 1000 },
+        "category": { "type": "string", "enum": ["भजन", "प्रसंग", "आरती", "कथा अंश"] },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "youtubeUrl", "thumbnailUrl", "category", "order", "createdAt"]
+    },
+    "GalleryPhoto": {
+      "title": "GalleryPhoto",
+      "description": "Devotional photograph from past Kathas and Vrindavan gatherings.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "minLength": 2, "maxLength": 160 },
+        "location": { "type": "string", "maxLength": 140 },
+        "imageUrl": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "order": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "location", "imageUrl", "order", "createdAt"]
+    },
+    "KathaBooking": {
+      "title": "KathaBooking",
+      "description": "Private Yajman Katha booking request containing PII.",
+      "type": "object",
+      "properties": {
+        "yajmanName": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "phone": { "type": "string", "minLength": 8, "maxLength": 20, "pattern": "^[+0-9\\s-]{8,20}$" },
+        "cityState": { "type": "string", "minLength": 2, "maxLength": 200 },
+        "kathaType": { "type": "string", "minLength": 2, "maxLength": 120 },
+        "durationDays": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "customDays": { "type": "string", "maxLength": 40 },
+        "preferredDate": { "type": "string", "maxLength": 80 },
+        "bookingType": { "type": "string", "enum": ["normal", "urgent"] },
+        "message": { "type": "string", "maxLength": 1000 },
+        "status": { "type": "string", "enum": ["pending", "confirmed", "completed", "cancelled"] },
+        "adminNotes": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "yajmanName",
+        "phone",
+        "cityState",
+        "kathaType",
+        "durationDays",
+        "customDays",
+        "preferredDate",
+        "bookingType",
+        "message",
+        "status",
+        "adminNotes",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Authorized portal administrator record.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "maxLength": 160 },
+        "displayName": { "type": "string", "maxLength": 120 },
+        "role": { "type": "string", "enum": ["admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "displayName", "role", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/site_config/{configId}": {
+      "schema": { "$ref": "#/entities/SiteConfig" },
+      "description": "Publicly readable portal configuration (main document); writable only by verified admins."
+    },
+    "/kathas/{kathaId}": {
+      "schema": { "$ref": "#/entities/UpcomingKatha" },
+      "description": "Publicly readable upcoming Kathas schedule; writable only by verified admins."
+    },
+    "/katha_types/{typeId}": {
+      "schema": { "$ref": "#/entities/KathaType" },
+      "description": "Publicly readable Katha categories; writable only by verified admins."
+    },
+    "/shorts/{shortId}": {
+      "schema": { "$ref": "#/entities/ShortClip" },
+      "description": "Publicly readable YouTube Shorts & Bhajan clips; writable only by verified admins."
+    },
+    "/gallery/{photoId}": {
+      "schema": { "$ref": "#/entities/GalleryPhoto" },
+      "description": "Publicly readable Photo Gallery items; writable only by verified admins."
+    },
+    "/bookings/{bookingId}": {
+      "schema": { "$ref": "#/entities/KathaBooking" },
+      "description": "Yajman Katha bookings. Public create allowed with strict schema & status='pending'; read/list/update/delete restricted strictly to verified admins."
+    },
+    "/admins/{uid}": {
+      "schema": { "$ref": "#/entities/AdminUser" },
+      "description": "Verified portal admin registry."
+    }
+  }
+}
